@@ -1,0 +1,77 @@
+/* Background Image */
+
+/* * {
+	background-image: url("../../assets/avatar.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+} */
+
+* {
+	font-family: "Kanit", sans-serif;
+}
+/* 
+h1 {
+	color: red;
+} */
+
+/* Border Radius */
+
+/* #image-avatar {
+	border-radius: 100px;
+	border-width: 1px;
+	border-color: rgba(155, 234, 145, 0.461);
+	border-style: dotted;
+	height: 100px;
+	width: 50px;
+}
+
+button {
+	border: 1px solid green;
+} */
+
+/* Font Family */
+
+.font-family {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	font-style: italic;
+}
+
+#data-1 {
+	color: aquamarine;
+}
+
+.data-2 {
+	color: aquamarine;
+}
+
+.data-2 {
+	color: black;
+}
+
+h3 {
+	color: blue;
+}
+
+h3 {
+	color: orange;
+}
+
+.container {
+	color: brown;
+}
+
+/* Block level element */
+.block-element {
+	border: 1px solid red;
+	display: inline;
+}
+
+/* Inline Element */
+.inline-element {
+	border: 1px solid green;
+	display: inline;
+	padding-top: 20px;
+	padding-left: 10px;
+	margin-top: 5px;
+}
