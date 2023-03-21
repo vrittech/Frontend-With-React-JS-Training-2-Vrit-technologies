@@ -16,18 +16,23 @@ h1 {
 
 /* Border Radius */
 
-/* #image-avatar {
-	border-radius: 100px;
+#image-avatar {
+	/* border-radius: 100px;
 	border-width: 1px;
 	border-color: rgba(155, 234, 145, 0.461);
 	border-style: dotted;
 	height: 100px;
-	width: 50px;
+	width: 50px; */
+
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 button {
 	border: 1px solid green;
-} */
+}
+*/
 
 /* Font Family */
 
@@ -43,6 +48,7 @@ button {
 
 .data-2 {
 	color: aquamarine;
+	text-align: center;
 }
 
 .data-2 {

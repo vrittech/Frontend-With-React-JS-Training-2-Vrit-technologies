@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			h1 {
+				text-align: center;
+				border: 1px solid red;
+			}
+			/* Center a content */
+			img {
+				display: block;
+				border: 1px solid red;
+			}
+
+			.box {
+				border: 1px solid red;
+				height: 700px;
+				width: 700px;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.parent-class {
+				position: relative;
+				border: 1px solid green;
+				width: 800px;
+				height: 1800px;
+				margin: auto;
+			}
+
+			.content {
+				border: 1px solid red;
+				height: 100px;
+				width: 100px;
+			}
+			/* Float Property */
+			.content-1 {
+				margin-top: 10px;
+				float: right;
+			}
+			.content-2 {
+				margin-top: 10px;
+				/* clear: right; */
+				float: right;
+			}
+			.content-3 {
+				/* clear: both; */
+				float: left;
+				margin-left: 20px;
+				padding-left: 10px;
+			}
+			.content-4 {
+				float: left;
+			}
+			p {
+				clear: left;
+			}
+			/* List Style */
+			ul {
+				list-style-type: none;
+			}
+
+			.relative {
+				position: relative;
+				top: 50px;
+				left: 20px;
+			}
+
+			.absolute {
+				position: absolute;
+				top: 10px;
+				left: 0;
+			}
+
+			.fixed {
+				position: fixed;
+				right: 0;
+				bottom: 5px;
+			}
+
+			.sticky {
+				position: sticky;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <h1>Student Manage</h1> -->
+		<!-- Float Property -->
+		<!-- <div class="box">
+			<div class="content-1 content">Content 1</div>
+			<div class="content-2 content">Content 2</div>
+			<div class="content-3 content">Content 3</div>
+			<div class="content-4 content">Content 4</div>
+
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto magnam
+				quidem aut. Ad expedita corporis, adipisci sed, voluptatibus ratione
+				dolore eligendi natus totam, qui aliquam debitis modi quos ab nulla?
+			</p>
+		</div> -->
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li>About</li>
+			<li>Contact</li>
+		</ul>
+		<!-- Position: Static, relative, absoloute, fixed, sticky -->
+		<div class="parent-class">
+			Parent CLass
+			<div class="box">
+				Box
+				<!-- <div class="relative content">Position relative</div>
+				<div class="absolute content">Position absolute</div> -->
+				<div class="sticky content">Navbar</div>
+				<div class="fixed content"><button>Chat with</button></div>
+			</div>
+		</div>
+	</body>
+</html>
