@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Font awesome cdn -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+			integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<title>Day 6</title>
+
+		<style>
+			/* * {
+				margin: 0;
+				padding: 0;
+			} */
+			/* .container {
+				font-size: 2px;
+			} */
+
+			/* EM UNIT */
+			h1 {
+				border: 1px solid red;
+			}
+			/* REM UNIT */
+
+			html {
+				font-size: 10px;
+			}
+			p {
+				font-size: 3rem;
+			}
+
+			/* div {
+				border: 1px solid red;
+				width: 50vw;
+				height: 100vh;
+			} */
+
+			/* Flex Start */
+			.container {
+				display: flex;
+				/* flex-direction: column; */
+				/* justify-content: center; */
+				/* align-items: flex-end; */
+				/* flex-wrap: wrap; */
+				border: 1px solid red;
+				height: auto;
+				width: auto;
+				margin: auto;
+			}
+			#item-1 {
+				flex-shrink: 1;
+				/* flex-grow: 3; */
+			}
+			#item-2 {
+				flex-shrink: 3;
+				/* flex-grow: 3; */
+			}
+			#item-3 {
+				/* order: 3; */
+				/* flex-shrink: 4; */
+			}
+
+			.content {
+				border: 1px solid green;
+				height: 70px;
+				width: 100px;
+				margin: 5px;
+			}
+
+			nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: calc(100vw -20px);
+				height: 40px;
+				background-color: aquamarine;
+			}
+
+			ul {
+				list-style-type: none;
+				display: flex;
+			}
+
+			a {
+				text-decoration: none;
+				color: red;
+			}
+
+			li {
+				margin: 5px;
+			}
+
+			.button-contact {
+				height: 20px;
+				border-radius: 10px;
+			}
+
+			h3 {
+				cursor: pointer;
+			}
+
+			.button-contact:hover {
+				color: red;
+				background-color: aqua;
+			}
+
+			.icon {
+				display: none;
+				margin-right: 7px;
+			}
+
+			@media screen and (max-width: 500px) {
+				.icon {
+					display: block;
+				}
+
+				button {
+					display: none;
+				}
+				/* ul{
+
+				} */
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div class="container">
+			Hello World
+			<h1>Test EM</h1>
+
+			<p>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci neque
+				distinctio nostrum inventore doloribus facere atque suscipit soluta
+				nesciunt veritatis necessitatibus, perferendis accusantium eius ab
+				deserunt. Quis inventore cupiditate eos?
+			</p>
+		</div> -->
+
+		<!-- FlexBox properties  -->
+		<!-- <div class="container">
+			<div class="content" id="item-1">Box 1</div>
+			<div class="content" id="item-2">Box 2</div>
+			<div class="content" id="item-3">Box 3</div>
+			<div class="content" id="item-4">Box 4</div>
+			<div class="content" id="item-4">Box 5</div>
+			<div class="content" id="item-4">Box 6</div>
+			<div class="content" id="item-4">Box 7</div>
+			<div class="content" id="item-4">Box 7</div>
+			<div class="content" id="item-4">Box 7</div>
+			<div class="content" id="item-4">Box 7</div>
+			<div class="content" id="item-4">Box 7</div>
+		</div> -->
+
+		<header>
+			<nav>
+				<h3>VRIT</h3>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">FAQ</a></li>
+				</ul>
+				<button class="button-contact">Contact us</button>
+				<div class="icon">
+					<i class="fa-solid fa-bars"></i>
+				</div>
+			</nav>
+		</header>
+	</body>
+</html>
