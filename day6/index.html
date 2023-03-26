@@ -117,47 +117,45 @@
 			}
 
 			@media screen and (max-width: 500px) {
+				html {
+					font-size: 8px;
+				}
+
+				.container {
+					flex-direction: column;
+				}
+
+				#item-1,
+				#item-2,
+				#item-3 {
+					flex-shrink: 0;
+				}
+
+				nav {
+					flex-direction: column;
+					align-items: center;
+				}
+
+				ul {
+					margin-top: 20px;
+					flex-direction: column;
+					align-items: center;
+				}
+
+				.button-contact {
+					margin-top: 20px;
+				}
+
 				.icon {
-					display: block;
 				}
 
 				button {
 					display: none;
 				}
-				/* ul{
-
-				} */
 			}
 		</style>
 	</head>
 	<body>
-		<!-- <div class="container">
-			Hello World
-			<h1>Test EM</h1>
-
-			<p>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci neque
-				distinctio nostrum inventore doloribus facere atque suscipit soluta
-				nesciunt veritatis necessitatibus, perferendis accusantium eius ab
-				deserunt. Quis inventore cupiditate eos?
-			</p>
-		</div> -->
-
-		<!-- FlexBox properties  -->
-		<!-- <div class="container">
-			<div class="content" id="item-1">Box 1</div>
-			<div class="content" id="item-2">Box 2</div>
-			<div class="content" id="item-3">Box 3</div>
-			<div class="content" id="item-4">Box 4</div>
-			<div class="content" id="item-4">Box 5</div>
-			<div class="content" id="item-4">Box 6</div>
-			<div class="content" id="item-4">Box 7</div>
-			<div class="content" id="item-4">Box 7</div>
-			<div class="content" id="item-4">Box 7</div>
-			<div class="content" id="item-4">Box 7</div>
-			<div class="content" id="item-4">Box 7</div>
-		</div> -->
-
 		<header>
 			<nav>
 				<h3>VRIT</h3>
