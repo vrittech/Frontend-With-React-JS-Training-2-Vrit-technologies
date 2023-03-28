@@ -9,7 +9,14 @@
 .header {
 	min-height: 100vh;
 	width: 100%;
-	background-image: url("https://images.unsplash.com/photo-1679063329944-7a0db4a253eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+	background-image: linear-gradient(
+			rgba(245, 246, 252, 0.52),
+			rgba(117, 19, 93, 0.73)
+		),
+		url("https://images.unsplash.com/photo-1679063329944-7a0db4a253eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+	/* background: 
+	linear-gradient(rgb(255, 203, 203), rgb(106, 106, 230)),
+		url("https://images.unsplash.com/photo-1679063329944-7a0db4a253eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"); */
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -72,6 +79,99 @@ nav img {
 	font-size: 62px;
 }
 
+/* Course css */
+.course {
+	text-align: center;
+	width: 80%;
+	margin: 3% auto;
+}
+
+.course .row {
+	margin-top: 5%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.course-col {
+	width: 30%;
+	padding: 1%;
+	border-radius: 5px;
+	transition: 0.5s;
+	background-color: antiquewhite;
+	padding: 20px 12px;
+	margin-bottom: 3%;
+}
+
+.course-col:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 20px 0 rgba(2, 67, 28, 0.4);
+}
+
+/* About section start */
+.about-section {
+	width: 100%;
+	min-height: 100vh;
+	background-color: aliceblue;
+}
+
+.container {
+	width: 80%;
+	display: block;
+	margin: auto;
+	padding-top: 50px;
+}
+
+.content-section {
+	float: left;
+	width: 50%;
+}
+
+.image-section {
+	float: right;
+	width: 40%;
+}
+
+.image-section img {
+	width: 100%;
+}
+
+.content-section .title {
+	text-transform: uppercase;
+	font-size: 48px;
+}
+
+.content-section .content h3 {
+	margin-top: 20px;
+	color: aqua;
+	font-size: 28px;
+}
+
+.content-section .content p {
+	margin-top: 10px;
+	color: rgb(68, 57, 225);
+	font-size: 18px;
+}
+.content-section .content .button {
+	margin-top: 30px;
+}
+
+.content-section .content .button a {
+	background-color: rgb(235, 156, 156);
+	padding: 12px 13px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 24px;
+	letter-spacing: 1.5px;
+}
+.content-section .social {
+	margin-top: 24px;
+}
+.content-section .social i {
+	color: red;
+	font-size: 30px;
+}
+
 @media only screen and (max-width: 768px) {
 	.text-box h3 {
 		font-size: 20px;
@@ -92,11 +192,30 @@ nav img {
 		width: 200px;
 		z-index: 2;
 		text-align: center;
+		transition: 0.5s;
 	}
 
 	.fa {
 		display: block;
 		color: #fff;
 		cursor: pointer;
+	}
+	.course-col {
+		width: 100%;
+	}
+	.container {
+		padding-top: 30px;
+	}
+	.content-section {
+		float: none;
+		width: 100%;
+		display: block;
+		margin: auto;
+	}
+	.image-section {
+		float: none;
+		width: 100%;
+		display: block;
+		margin: auto;
 	}
 }
