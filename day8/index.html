@@ -15,6 +15,7 @@
 		<title>Day 8</title>
 	</head>
 	<body>
+		<!-- Landing Page and navbar section -->
 		<section class="header">
 			<nav>
 				<a href="#">
@@ -23,9 +24,9 @@
 						alt="logo-picture"
 					/>
 				</a>
-				<i class="fa fa-times"></i>
 
-				<div class="nav-links">
+				<div class="nav-links" id="navLinks">
+					<i class="fa fa-times" onclick="closeMenu()"></i>
 					<ul>
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Courses</a></li>
@@ -33,7 +34,7 @@
 						<li><a href="#">Contact us</a></li>
 					</ul>
 				</div>
-				<i class="fa fa-bars"></i>
+				<i class="fa fa-bars" onclick="showMenu()"></i>
 			</nav>
 			<div class="text-box">
 				<h3>Hi! This is travel blog page</h3>
@@ -43,5 +44,20 @@
 				</p>
 			</div>
 		</section>
+
+		<!-- Course section -->
+		<section id="course" class="course"></section>
+
+		<script>
+			const navLinks = document.getElementById("navLinks");
+
+			function closeMenu() {
+				navLinks.style.right = "-200px";
+			}
+
+			function showMenu() {
+				navLinks.style.right = "0";
+			}
+		</script>
 	</body>
 </html>
