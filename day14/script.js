@@ -1,3 +1,5 @@
+
+
 //arrow function
 
 const functionName = (num1, num2) => {
@@ -13,7 +15,7 @@ console.log(functionName(1, 2));
 
 
 // Comparison operator 
-let x = '9';
+let x = 9;
 let y = '3';
 let z = '9';
 //It checks only value
@@ -23,6 +25,7 @@ let z = '9';
 // console.log(z >= x)
 // console.log(z <= x)
 console.log(19 % 2 === 0)
+
 
 // Conditional Statement
 let number;
@@ -57,9 +60,10 @@ let i = 11;
 // }
 
 const vritStudents = ['parbat', '', 'Test', '', 'dipesh', ''];
+vritStudents[i]
 const actualData = [];
 
-for (let i = 0; i <= vritStudents.length - 1; i++) {
+for (let i = 1; i <= vritStudents.length; i++) {
    if (vritStudents[i] === 'parbat' ||
       vritStudents[i] === 'sudeep' ||
       vritStudents[i] === 'bhuwan'
@@ -70,7 +74,7 @@ for (let i = 0; i <= vritStudents.length - 1; i++) {
    }
 }
 // Map function
-vritStudents.map((a) => {
+vritStudents.map((value, index) => {
    if (a !== '') {
       actualData.push(a);
    }
