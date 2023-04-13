@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// REST API
+			// JSON Format
+			// 	   {"employees":
+			//     [
+			// 	  { "firstName":"John", "lastName":"Doe" },
+			// 	  { "firstName":"Anna", "lastName":"Smith" },
+			// 	  { "firstName":"Peter", "lastName":"Jones" }
+			// 	]
+			// }
+			// SOAP API
+			// XML Format
+			//   <employees>
+			//   <employee>
+			//     <firstName>John</firstName> <lastName>Doe</lastName>
+			//   </employee>
+			//   <employee>
+			//     <firstName>Anna</firstName> <lastName>Smith</lastName>
+			//   </employee>
+			//   <employee>
+			//     <firstName>Peter</firstName> <lastName>Jones</lastName>
+			//   </employee>
+			// </employees>
+
+			let people = [
+				{ name: "Ram", age: 17 },
+				{ name: "syam", age: 16 },
+				{ name: "test", age: 18 },
+				{ name: "Sita", age: 19 },
+				{ name: "sahil", age: 19 },
+				{ name: "hari", age: 21 },
+				{ name: "parbat", age: 21 },
+				{ name: "navaraj", age: 21 },
+			];
+			//Object Destructuring
+			const obj = { name: "Ram", age: 17, contactInfo: 123 };
+
+			// console.log(contactinfo);
+
+			console.log(obj["name"]);
+
+			localStorage.removeItem("backendProducts");
+			// console.log(obj.age);
+			// [
+			// 	17: [person]
+			// ];
+
+			const groupedData = people.reduce((acc, person) => {
+				let { age, name } = person;
+				if (acc[age] === undefined) {
+					acc[age] = [];
+				}
+				acc[age].push(name);
+				return acc;
+			}, []);
+			// console.log(groupedData);
+
+			// window.location.href = "dashboard.html";
+
+			let products = [];
+			let backendURL = "https://dummyjson.com/products";
+
+			// let obbj = {
+			// 	name: "firstmane",
+			// 	age: [200],
+			// 	isActive: false,
+			// 	profilePic: "https://cloudinary.com",
+			// };
+			// console.log(obbj);
+			// console.log(JSON.stringify(obbj));
+
+			// console.log(fetch(backendURL));
+			async function getProducts() {
+				const response = await fetch(backendURL);
+				const products = await response.json();
+				console.log(products);
+			}
+
+			getProducts();
+
+			// local storage
+			// session storage
+			// cookies
+
+			// POST Method
+
+			let loginData = {
+				email: "abc@gmail.com",
+				password: "asdf123",
+			};
+
+			// async function abc() {}
+			// async/await
+			const submitLoginData = async () => {
+				const res = await fetch(`${backendURL}/add`, {
+					method: "POST",
+					body: JSON.stringify(loginData),
+				});
+				const value = await res.json();
+			};
+
+			submitLoginData();
+		</script>
+	</body>
+</html>
