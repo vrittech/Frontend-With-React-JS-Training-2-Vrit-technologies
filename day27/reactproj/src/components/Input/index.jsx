@@ -1,12 +1,20 @@
 import React from "react";
-import Button from "../Button";
+
+//passing props
+
+//One way data binding
+//Parent Component
+//Child Component
 
 const Input = (props) => {
   return (
-    <div>
-      <input type="text" placeholder={props.placeholder} />
-      <Button abc="Register" />
-    </div>
+    <>
+      <input
+        type="text"
+        placeholder={props.placeholder}
+        onChange={props.valueOnchange}
+      />
+    </>
   );
 };
 

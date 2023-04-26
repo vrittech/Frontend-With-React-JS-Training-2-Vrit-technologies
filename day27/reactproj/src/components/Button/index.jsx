@@ -1,7 +1,7 @@
-const Button = ({ abc }) => {
+const Button = ({ name, sumOfTwoNumbers }) => {
   return (
     <>
-      <button>{abc}</button>
+      <button onClick={sumOfTwoNumbers}>{name}</button>
     </>
   );
 };
