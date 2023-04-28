@@ -10,7 +10,9 @@ const Input = (props) => {
   return (
     <>
       <input
-        type="text"
+        className=""
+        type="number"
+        name="test"
         placeholder={props.placeholder}
         onChange={props.valueOnchange}
       />

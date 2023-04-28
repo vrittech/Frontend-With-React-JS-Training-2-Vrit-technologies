@@ -1,42 +1,60 @@
 //Pascal Case -- Component Name (ThisIsFunction)
 
 import { useState } from "react";
-import Button from "./components/Button";
-import Input from "./components/Input";
-import StudentLister from "./components/StudentLister/StudentLister";
+import StudentPage from "./pages/StudentPage";
+import SumPage from "./pages/SumPage";
+
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 //Camel Case -- function name, variable name (thisIsFunction)
 //Pascal Case ButtonComponent
 
 //Parent to child data passing
+
+//state  react hooks
 function App() {
-  const students = ["Sahil", "Nabaraj", "Prabin", "Mukesh"];
-  let a, b;
-  const [firsNum, setFIrstNum] = useState();
+  const students = ["Sahil", "Nabaraj", "Prabin", "Mukesh", "Ryu"];
+
+  //const
+
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [secondNum, setSecondNumber] = useState(0);
+  const [sum, setSum] = useState(0);
 
   const sumOfTwoNumbers = () => {
-    console.log(a + b);
+    setSum(Number(firstNumber) + Number(secondNum));
   };
+
   const valueOnchangeForFirstNumber = (event) => {
-    a = event.target.value;
+    setFirstNumber(event.target.value);
   };
+
   const valueOnchangeForSecondNumber = (event) => {
-    b = event.target.value;
+    setSecondNumber(event.target.value);
   };
   return (
     <>
       {/* Student Listing dynamically */}
-      <StudentLister students={students} />
-
-      <Input
-        placeholder="Enter first number here"
-        valueOnchange={valueOnchangeForFirstNumber}
-      />
-      <Input
-        placeholder="Enter second number here"
-        valueOnchange={valueOnchangeForSecondNumber}
-      />
-      <Button name="Sum" sumOfTwoNumbers={sumOfTwoNumbers} />
+      <BrowserRouter>
+        <StudentPage students={students} />
+        <Routes>
+          {/* <Route
+            path="/dashboard"
+            element={<StudentPage students={students} />}
+          /> */}
+          <Route
+            path="/sum"
+            element={
+              <SumPage
+                sumOfTwoNumbers={sumOfTwoNumbers}
+                valueOnchangeForFirstNumber={valueOnchangeForFirstNumber}
+                valueOnchangeForSecondNumber={valueOnchangeForSecondNumber}
+                sum={sum}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

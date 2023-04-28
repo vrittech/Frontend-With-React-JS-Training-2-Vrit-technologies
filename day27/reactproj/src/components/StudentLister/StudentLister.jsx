@@ -1,6 +1,6 @@
 import React from "react";
 import ListComponent from "../ListComponent";
-const StudentLister = (props) => {
+const StudentLister = ({ students }) => {
   //destructuring
   // const { students } = props;
   // console.log(students);
@@ -8,7 +8,7 @@ const StudentLister = (props) => {
   return (
     <div>
       <ul>
-        {props.students.map((student, index) => {
+        {students.map((student, index) => {
           return <ListComponent key={student} student={student} />;
         })}
       </ul>
