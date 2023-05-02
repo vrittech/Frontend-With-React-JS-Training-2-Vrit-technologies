@@ -1,0 +1,8 @@
+.student-class {
+  display: flex;
+  justify-content: space-between;
+}
+
+.student {
+  display: inline;
+}
