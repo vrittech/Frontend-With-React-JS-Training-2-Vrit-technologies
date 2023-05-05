@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 import "./student.css";
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
+import {
+  ToastifySuccess,
+  ToastifyWarning,
+} from "../../services/toastify.service";
 
 const StudentLister = (props) => {
   const [student, setStudent] = useState("");
+
+  const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -14,6 +21,7 @@ const StudentLister = (props) => {
     data.push(student);
     props.setStudents(data);
     setStudent("");
+    ToastifySuccess("Student added succesfully");
   };
 
   const changeEventHandler = (event) => {
@@ -27,21 +35,40 @@ const StudentLister = (props) => {
     props.setStudents(filteredStudents);
   };
 
+  const editHandler = (index, editedStudent) => {
+    const updStudent = props.students.map((student, i) => {
+      return i === index ? editedStudent : student;
+    });
+    props.setStudents(updStudent);
+  };
+
+  const navigateProdsPage = () => {
+    navigate("/products");
+  };
+
   const StudentItem = ({ stud, index }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedStudent, setEditedStudent] = useState(stud);
 
     const toggleEdit = () => {
-      setIsEditing(!isEditing);
+      setIsEditing(true);
     };
 
     const cancelHandler = () => {
       setEditedStudent(stud);
       setIsEditing(false);
+      ToastifyWarning("Cancelled");
     };
 
     const changeHandler = (event) => {
       setEditedStudent(event.target.value);
+    };
+
+    const saveHandler = (event) => {
+      event.preventDefault();
+      editHandler(index, editedStudent);
+      setIsEditing(false);
+      ToastifySuccess(`${editedStudent} user edited successfully`);
     };
 
     return (
@@ -56,7 +83,9 @@ const StudentLister = (props) => {
               onChange={(event) => changeHandler(event)}
             />
             <span>
-              <Button variant="success">Save</Button>
+              <Button variant="success" onClick={saveHandler}>
+                Save
+              </Button>
               <Button variant="danger" onClick={cancelHandler}>
                 Cancel
               </Button>
@@ -96,6 +125,9 @@ const StudentLister = (props) => {
         />
         <Button variant="secondary" onClick={submitHandler}>
           Add Student
+        </Button>
+        <Button variant="primary" className="ms-2" onClick={navigateProdsPage}>
+          GO to products page
         </Button>
       </Form>
 
