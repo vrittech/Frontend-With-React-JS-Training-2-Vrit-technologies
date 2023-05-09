@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductLister from "../../components/ProductLister";
 import { getProductsData } from "../../services/axios.service";
+import "./index.css";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -16,9 +17,11 @@ const ProductsPage = () => {
 
   return (
     <>
-      {products.map((prod) => {
-        return <ProductLister key={prod.id} product={prod} />;
-      })}
+      <div className="flexbox">
+        {products.map((prod) => {
+          return <ProductLister key={prod.id} product={prod} />;
+        })}
+      </div>
     </>
   );
 };

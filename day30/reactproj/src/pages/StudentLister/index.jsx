@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,11 +9,14 @@ import {
   ToastifySuccess,
   ToastifyWarning,
 } from "../../services/toastify.service";
+import GlobalContext from "../../context/UseContext";
 
 const StudentLister = (props) => {
   const [student, setStudent] = useState("");
 
   const navigate = useNavigate();
+
+  const data = useContext(GlobalContext);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -132,7 +135,7 @@ const StudentLister = (props) => {
       </Form>
 
       <ListGroup>
-        {props.students.map((stud, index) => {
+        {data.map((stud, index) => {
           return <StudentItem key={stud + index} stud={stud} index={index} />;
         })}
       </ListGroup>
