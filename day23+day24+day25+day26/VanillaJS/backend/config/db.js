@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MONGO_URI = "MONGO_URL_FROM_ENV";
+const MONGO_URI = "mongodb+srv://nirajankunwor604:wl4hZsSw48od5HOI@cluster0.b2jya8e.mongodb.net/?retryWrites=true&w=majority";
 
 const connDB = async () => {
    try {
