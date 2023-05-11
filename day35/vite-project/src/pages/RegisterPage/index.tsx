@@ -2,9 +2,13 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import moment from "moment";
 import { dataInterface } from "../../interface/global.interface";
 import { registerData } from "../../services/axios.service";
+import { useNavigate } from "react-router-dom";
+import {
+  ToastifyError,
+  ToastifySuccess,
+} from "../../services/toastify.service";
 
 const RegisterPage = () => {
   const [fullName, setFullName] = useState<string>("");
@@ -13,10 +17,12 @@ const RegisterPage = () => {
   const [dob, setDob] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const submitHandler = (e: any) => {
+  const navigate = useNavigate();
+
+  const submitHandler = async (e: any) => {
     e.preventDefault();
-    const dateOfBirth = moment(dob).format("YYYY-MM-DD");
-    // const dateOfBirth = new Date(dob);
+    // const dateOfBirth = moment(dob).format("YYYY-MM-DD");
+    const dateOfBirth = new Date(dob);
     const data: dataInterface = {
       fullName: fullName,
       phoneNumber,
@@ -24,7 +30,14 @@ const RegisterPage = () => {
       dob: dateOfBirth,
       password,
     };
-    registerData(data);
+    const response: any = await registerData(data);
+
+    if (response.data.status) {
+      navigate("/");
+      ToastifySuccess(response.data.message);
+    } else {
+      ToastifyError(response.data.message);
+    }
   };
   return (
     <Container>
