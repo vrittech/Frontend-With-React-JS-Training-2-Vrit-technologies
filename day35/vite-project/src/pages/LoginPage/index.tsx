@@ -9,11 +9,14 @@ import {
   ToastifySuccess,
 } from "../../services/toastify.service";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "./loginSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -25,6 +28,7 @@ const LoginPage = () => {
 
     if (resp.data.status) {
       navigate("/home");
+      dispatch(login());
       ToastifySuccess(resp.data.message);
     } else {
       ToastifyError(resp.data.message);
