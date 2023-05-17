@@ -1,10 +1,10 @@
 import Layout from '@/components/Layout'
 import React from 'react'
 
-const categories = () => {
+const Orders = () => {
    return (
-      <Layout>categories</Layout>
+      <Layout>Orders</Layout>
    )
 }
 
-export default categories
+export default Orders
