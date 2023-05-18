@@ -7,14 +7,14 @@ const Products = () => {
    const [products, setProducts] = useState([]);
 
    useEffect(() => {
-      const response = getProducts();
-      setProducts(response.data);
+      // const response = getProducts();
+      // setProducts(response.data);
    }, [])
 
    return (
       <Layout>
          <Link className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' href="products/new" >Add new product</Link>
-         <table className='mt-10 table-auto'>
+         <table className='mt-10 basic'>
             <thead>
                <tr>
                   <td>Product name</td>
