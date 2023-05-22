@@ -1,5 +1,12 @@
 import React from 'react'
-import { ClockLoader } from 'react-spinners';
+import { BounceLoader, ClockLoader } from 'react-spinners';
+
+
+export const BounceSpinLoader = () => {
+   return (
+      <BounceLoader color={'#1E3A8A'} speedMultiplier={2} />
+   );
+}
 
 const Loader = () => {
    const override = {
