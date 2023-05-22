@@ -1,8 +1,10 @@
 import Layout from '@/components/Layout'
+import Loader from '@/components/Loader';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const Categories = () => {
+   const [isLoading, setIsLoading] = useState(false);
    const [name, setName] = useState('');
    const [parentCategory, setParentCategory] = useState('');
    const [editedCategory, setEditedCategory] = useState(null);
@@ -13,8 +15,10 @@ const Categories = () => {
    }, [])
 
    const getCategories = async () => {
+      setIsLoading(true);
       const resp = await axios.get('/api/categories');
       setCategories(resp.data);
+      setIsLoading(false);
    }
 
    const saveCategory = async (e) => {
@@ -48,7 +52,13 @@ const Categories = () => {
       setParentCategory(category?.parent?._id);
    }
 
-   const deleteCategory = (category) => { }
+   const deleteCategory = async (category) => {
+      setIsLoading(true);
+      const { _id } = category;
+      await axios.delete('/api/categories?_id=' + _id);
+      getCategories();
+      setIsLoading(false);
+   }
 
    return (
       <Layout>
@@ -69,33 +79,32 @@ const Categories = () => {
          </form>
 
          {!editedCategory &&
-            <table className='basic mt-4'>
-               <thead>
-                  <tr>
-                     <td>Category name</td>
-                     <td>Parent  Category</td>
-                     <td></td>
-                  </tr>
-               </thead>
-               <tbody>
-                  {
-                     categories.length > 0 &&
-                     categories.map((category) => {
-                        return <tr key={category._id}>
-                           <td>{category.name}</td>
-                           <td>{category?.parent?.name}</td>
-                           <td>
-                              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded' onClick={(e) => {
-                                 editCategory(category);
-                              }}>Edit</button>
-                              <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded' onClick={(e) => deleteCategory(category)}>Delete</button>
-                           </td>
-                        </tr>
-                     })
-                  }
-               </tbody>
-            </table>
-         }
+            isLoading ? <Loader /> : <table className='basic mt-4'>
+            <thead>
+               <tr>
+                  <td>Category name</td>
+                  <td>Parent  Category</td>
+                  <td></td>
+               </tr>
+            </thead>
+            <tbody>
+               {
+                  categories.length > 0 &&
+                  categories.map((category) => {
+                     return <tr key={category._id}>
+                        <td>{category.name}</td>
+                        <td>{category?.parent?.name}</td>
+                        <td>
+                           <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded' onClick={(e) => {
+                              editCategory(category);
+                           }}>Edit</button>
+                           <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded' onClick={(e) => deleteCategory(category)}>Delete</button>
+                        </td>
+                     </tr>
+                  })
+               }
+            </tbody>
+         </table>}
       </Layout>
    )
 }

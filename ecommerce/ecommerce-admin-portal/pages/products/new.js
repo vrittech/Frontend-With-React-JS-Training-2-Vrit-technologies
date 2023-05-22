@@ -1,18 +1,36 @@
 import Layout from '@/components/Layout'
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 const NewProducts = () => {
+   const [title, setTitle] = useState('');
+   const [description, setDescription] = useState('');
+   const [category, setCategory] = useState('');
+   const [price, setPrice] = useState('');
+   const [images, setImages] = useState([])
+   const [isUploading, setIsUploading] = useState(false)
+   const [categories, setCategories] = useState([])
+   useEffect(() => {
+      axios.get('/api/categories').then((response) => {
+         setCategories(response.data);
+      })
+   }, [])
    return (
       <Layout>
          <h1>Add products</h1>
          <form>
             <label>Product name</label>
-            <input type='text' placeholder='Product name' />
+            <input type='text' placeholder='Product name'
+               onChange={(e) => setTitle(e.target.value)} />
 
             <label>Category</label>
-            <select>
+            <select onChange={(e) => setCategory(e.target.value)}>
                <option value="">Uncategorized</option>
-               <option value="">Electronics</option>
+               {
+                  categories.length > 0 && categories.map((category) => {
+                     return <option key={category._id} value={category._id}>{category.name}</option>
+                  })
+               }
             </select>
 
             <label>Photos</label>
@@ -26,10 +44,10 @@ const NewProducts = () => {
             </div>
 
             <label>Description</label>
-            <textarea placeholder='Product description' />
+            <textarea placeholder='Product description' onChange={(e) => setDescription(e.target.value)} />
 
             <label>Price</label>
-            <input type='number' placeholder='Product price' />
+            <input type='number' placeholder='Product price' onChange={(e) => setPrice(e.target.value)} />
 
             <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>Save</button>
          </form>
