@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout'
 import { getProducts } from '@/services/axios.service'
+import axios from 'axios'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 
@@ -7,9 +8,23 @@ const Products = () => {
    const [products, setProducts] = useState([]);
 
    useEffect(() => {
-      // const response = getProducts();
-      // setProducts(response.data);
+      getProducts().then((resp) => {
+         setProducts(resp.data);
+      })
    }, [])
+
+   const deleteProduct = async (e, product) => {
+      e.preventDefault();
+      try {
+         await axios.delete('/api/products?id=' + product._id);
+         const data = products.filter((prod) => {
+            return prod._id !== product._id;
+         })
+         setProducts(data);
+      } catch (error) {
+         console.log(error)
+      }
+   }
 
    return (
       <Layout>
@@ -19,6 +34,7 @@ const Products = () => {
                <tr>
                   <td>Product name</td>
                   <td>Product price</td>
+                  <td></td>
                </tr>
             </thead>
             <tbody>
@@ -27,6 +43,9 @@ const Products = () => {
                      return <tr key={product._id}>
                         <td>{product.title}</td>
                         <td>{product.price}</td>
+                        <td>
+                           <button onClick={(e) => deleteProduct(e, product)}>Delete</button>
+                        </td>
                      </tr>
                   })
                }
