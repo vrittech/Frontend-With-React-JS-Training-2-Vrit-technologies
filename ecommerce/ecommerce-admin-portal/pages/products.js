@@ -32,6 +32,7 @@ const Products = () => {
          <table className='mt-10 basic'>
             <thead>
                <tr>
+                  <td></td>
                   <td>Product name</td>
                   <td>Product price</td>
                   <td></td>
@@ -41,10 +42,16 @@ const Products = () => {
                {
                   products && products.map((product) => {
                      return <tr key={product._id}>
+                        <td>{
+                           product.images.map((i) => {
+                              return <img key={i} className='h-8' src={i} />
+                           })
+                        }</td>
                         <td>{product.title}</td>
-                        <td>{product.price}</td>
+                        <td>${product.price}</td>
+
                         <td>
-                           <button onClick={(e) => deleteProduct(e, product)}>Delete</button>
+                           <button className='' onClick={(e) => deleteProduct(e, product)}>Delete</button>
                         </td>
                      </tr>
                   })

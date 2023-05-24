@@ -78,33 +78,37 @@ const Categories = () => {
             </div>
          </form>
 
-         {!editedCategory &&
-            isLoading ? <Loader /> : <table className='basic mt-4'>
-            <thead>
-               <tr>
-                  <td>Category name</td>
-                  <td>Parent  Category</td>
-                  <td></td>
-               </tr>
-            </thead>
-            <tbody>
-               {
-                  categories.length > 0 &&
-                  categories.map((category) => {
-                     return <tr key={category._id}>
-                        <td>{category.name}</td>
-                        <td>{category?.parent?.name}</td>
-                        <td>
-                           <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded' onClick={(e) => {
-                              editCategory(category);
-                           }}>Edit</button>
-                           <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded' onClick={(e) => deleteCategory(category)}>Delete</button>
-                        </td>
-                     </tr>
-                  })
-               }
-            </tbody>
-         </table>}
+         {
+            isLoading ? <Loader /> : !editedCategory &&
+               <div style={{ height: 'calc(100vh - 120px)', overflowY: 'scroll' }}>
+                  <table className='basic mt-4 h-64'>
+                     <thead>
+                        <tr>
+                           <td>Category name</td>
+                           <td>Parent  Category</td>
+                           <td></td>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {
+                           categories.length > 0 &&
+                           categories.map((category) => {
+                              return <tr key={category._id}>
+                                 <td>{category.name}</td>
+                                 <td>{category?.parent?.name}</td>
+
+                                 <td>
+                                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded' onClick={(e) => {
+                                       editCategory(category);
+                                    }}>Edit</button>
+                                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded' onClick={(e) => deleteCategory(category)}>Delete</button>
+                                 </td>
+                              </tr>
+                           })
+                        }
+                     </tbody>
+                  </table>
+               </div>}
       </Layout>
    )
 }

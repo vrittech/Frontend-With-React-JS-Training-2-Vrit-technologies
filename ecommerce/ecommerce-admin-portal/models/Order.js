@@ -1,4 +1,4 @@
-import { model, models, Schema } from "mongoose";
+import { model, models, Schema, Types } from "mongoose";
 
 const OrderSchema = new Schema({
   line_items: Object,
@@ -8,6 +8,7 @@ const OrderSchema = new Schema({
   postalCode: String,
   streetAddress: String,
   country: String,
+  product: { type: Types.ObjectId, ref: 'Product' },
   paid: Boolean,
 }, {
   timestamps: true,
