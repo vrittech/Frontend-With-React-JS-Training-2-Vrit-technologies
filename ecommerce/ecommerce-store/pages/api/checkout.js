@@ -34,6 +34,8 @@ export default async function handler(req, res) {
     }
   }
 
+
+
   const orderDoc = await Order.create({
     line_items, name, email, city, postalCode,
     streetAddress, country, paid: false,

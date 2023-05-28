@@ -1,18 +1,26 @@
 import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
 import { isAdminRequest } from "@/pages/api/auth/[...nextauth]";
-import NextCors from 'nextjs-cors';
+import Cors from 'cors';
+
+
+const cors = Cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+});
 
 export default async function handle(req, res) {
-  await NextCors(req, res, {
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  await new Promise((resolve, reject) => {
+    cors(req, res, (err) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve();
+    });
   });
   const { method } = req;
 
   await mongooseConnect();
-  await isAdminRequest(req, res);
+  // await isAdminRequest(req, res);
 
   if (method === 'GET') {
     if (req.query?.id) {
