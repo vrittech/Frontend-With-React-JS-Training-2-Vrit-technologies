@@ -1,6 +1,12 @@
-import React from "react";
+import CartContext from "@/context/CartContext";
+import React, { useContext } from "react";
 
 const ProductCard = ({ prod }) => {
+  const { addProduct } = useContext(CartContext);
+  const addToCart = (e, id) => {
+    e.preventDefault();
+    addProduct(id);
+  };
   return (
     <>
       <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -77,6 +83,7 @@ const ProductCard = ({ prod }) => {
               ${prod.price}
             </span>
             <button
+              onClick={(event) => addToCart(event, prod._id)}
               data-tooltip-target="tooltip-animation"
               href="#"
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

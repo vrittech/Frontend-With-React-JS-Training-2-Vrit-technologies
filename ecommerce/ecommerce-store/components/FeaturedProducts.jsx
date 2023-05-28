@@ -1,8 +1,15 @@
+import CartContext from "@/context/CartContext";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const FeaturedProducts = ({ product }) => {
-  console.log(product);
+  const { addProduct } = useContext(CartContext);
+
+  const addToCart = (e, id) => {
+    e.preventDefault();
+    addProduct(id);
+  };
+
   return (
     <>
       {product && (
@@ -22,9 +29,12 @@ const FeaturedProducts = ({ product }) => {
                   </label>
                 </Link>
                 <Link href={"/products/1"}>
-                  <label className="inline-block px-4 py-2 text-purple-600 bg-white rounded-md hover:bg-purple-600 hover:text-white transition duration-300">
+                  <button
+                    onClick={(event) => addToCart(event, product._id)}
+                    className="inline-block px-4 py-2 text-purple-600 bg-white rounded-md hover:bg-purple-600 hover:text-white transition duration-300"
+                  >
                     Add to cart
-                  </label>
+                  </button>
                 </Link>
               </div>
             </div>

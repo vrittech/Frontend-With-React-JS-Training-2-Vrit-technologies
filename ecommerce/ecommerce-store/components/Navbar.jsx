@@ -1,7 +1,9 @@
+import CartContext from "@/context/CartContext";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const Navbar = () => {
+  const { cartProduct } = useContext(CartContext);
   return (
     <header className="bg-gray-400">
       <div className="container mx-auto py-4 flex justify-between">
@@ -35,7 +37,9 @@ const Navbar = () => {
             <label className="cursor-pointer">Categories</label>
           </Link>
           <Link href="/cart">
-            <label className="cursor-pointer">Cart</label>
+            <label className="cursor-pointer">
+              Cart ({cartProduct.length})
+            </label>
           </Link>
           <Link href="/account">
             <label className="cursor-pointer">Account</label>
