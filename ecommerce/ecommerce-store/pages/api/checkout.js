@@ -11,10 +11,11 @@ export default async function handler(req, res) {
   const {
     name, email, city,
     postalCode, streetAddress, country,
-    cartProducts,
+    cartProduct,
   } = req.body;
+  console.log(cartProduct)
   await mongooseConnect();
-  const productsIds = cartProducts;
+  const productsIds = cartProduct;
   const uniqueIds = [...new Set(productsIds)];
   const productsInfos = await Product.find({ _id: uniqueIds });
 
@@ -33,7 +34,6 @@ export default async function handler(req, res) {
       });
     }
   }
-
 
 
   const orderDoc = await Order.create({
